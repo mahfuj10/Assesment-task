@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table } from 'reactstrap';
+import { Container, Spinner, Table } from 'reactstrap';
 import { MdDeleteOutline } from 'react-icons/md';
 import '../../style/style.css';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
+import { setClients } from '../../Redux/action/action';
+import { useDispatch } from 'react-redux';
 
 const ClientsTable = () => {
 
+    const dispatch = useDispatch();
     const [clients, setClients] = useState([]);
-
+    // const clients = useSelector(state => state?.clients?.clients?.clients);
     // fetch api
+
 
     useEffect(() => {
         fetch('https://run.mocky.io/v3/8260aa5d-8af8-4cff-999e-6e81b217f0ba')
@@ -78,39 +83,46 @@ const ClientsTable = () => {
 
                     </tr>
                 </thead>
-                <tbody>
 
-                    {
-                        clients.map(client => <tr key={client.id}>
-                            <td>
-                                {client.name}
-                            </td>
-                            <td>
-                                {client.company}
-                            </td>
-                            <td>
-                                {client.orderId}
-                            </td>
-                            <td>
-                                {client.invoicepaid}
-                            </td>
-                            <td>
-                                {client.invoicePending}
-                            </td>
-                            <td >
-                                <MdDeleteOutline
-                                    onClick={() => handleDeletClient(client.id)}
-                                    type="button"
-                                    className='fs-5'
-                                />
-                            </td>
+                {
+                    clients?.length === undefined ?
 
-                        </tr>)
-                    }
+                        <Spinner />
+
+                        :
+                        <tbody>
+
+                            {
+                                clients?.map(client => <tr key={client.id}>
+                                    <td>
+                                        {client.name}
+                                    </td>
+                                    <td>
+                                        {client.company}
+                                    </td>
+                                    <td>
+                                        {client.orderId}
+                                    </td>
+                                    <td>
+                                        {client.invoicepaid}
+                                    </td>
+                                    <td>
+                                        {client.invoicePending}
+                                    </td>
+                                    <td >
+                                        <MdDeleteOutline
+                                            onClick={() => handleDeletClient(client.id)}
+                                            type="button"
+                                            className='fs-5'
+                                        />
+                                    </td>
+
+                                </tr>)
+                            }
 
 
 
-                </tbody>
+                        </tbody>}
             </Table>
 
         </Container >
