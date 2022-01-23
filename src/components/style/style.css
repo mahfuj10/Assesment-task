@@ -1,0 +1,15 @@
+/* client table */
+
+th{
+    font-weight: 400;
+    color: #8898B2;
+    text-transform: uppercase;
+    font-size: 14px;
+};
+thead{
+    background-color: #F6F9FC;
+};
+td{
+    font-weight: 400;
+    color: #525F7F;
+};
