@@ -3,15 +3,10 @@ import { Container, Spinner, Table } from 'reactstrap';
 import { MdDeleteOutline } from 'react-icons/md';
 import '../../style/style.css';
 import Swal from 'sweetalert2';
-import { useSelector } from 'react-redux';
-import { setClients } from '../../Redux/action/action';
-import { useDispatch } from 'react-redux';
 
 const ClientsTable = () => {
 
-    const dispatch = useDispatch();
     const [clients, setClients] = useState([]);
-    // const clients = useSelector(state => state?.clients?.clients?.clients);
     // fetch api
 
 

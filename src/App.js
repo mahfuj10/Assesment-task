@@ -1,7 +1,7 @@
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Navigation from './components/Navigation/Navigation';
 import { setClients } from './components/Redux/action/action';
 import ClientsTable from './components/Table/ClientsTable/ClientsTable';
@@ -13,6 +13,8 @@ function App() {
 
 
   const dispatch = useDispatch();
+
+  //get clients data and set the data in redux store
 
   const FetchClients = () => {
 
